@@ -4,7 +4,7 @@ import mysql.connector
 import boto3
 from chalice import Chalice
 
-app = Chalice(app_name='chalice-dp1-spotify-tpg6hu-dev-s3_handler')
+app = Chalice(app_name='backend')
 app.debug = True
 
 # s3 things
@@ -39,11 +39,11 @@ def s3_handler(event):
     data = json.loads(text)
 
     # parse the data fields 1-by-1 from 'data'
-    TITLE = data.get('title', 'Unknown Title')
-    ALBUM = data.get('album', 'Unknown Album')
-    ARTIST = data.get('artist', 'Unknown Artist')
-    YEAR = data.get('year', 'Unknown Year')
-    GENRE = data.get('genre', 'Unknown Genre')
+    TITLE = data.get('title')
+    ALBUM = data.get('album')
+    ARTIST = data.get('artist')
+    YEAR = data.get('year')
+    GENRE = data.get('genre')
 
     # get the unique ID for the bundle to build the mp3 and jpg urls
     # you get 5 data points in each new JSON file that arrives, but
